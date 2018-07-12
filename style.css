@@ -1,0 +1,177 @@
+ * {
+            font-family: Arial;
+            margin: 0;
+            padding: 0;
+        }
+
+        #mapa {
+            height: 100%;
+            width: 70%;
+            float: left;
+            height: 100%;
+        }
+
+        #menu {
+            height: 100%;
+            width: 29%;
+            
+            height: 100%;
+            background:white;
+            overflow:hidden;
+            position:absolute;
+            top:0;
+            right:0;
+        }
+
+        body {
+            height: 800px;
+            overflow:hidden;
+        }
+
+        input {
+            clear: both;
+            width: 100%;
+            height: 30px;
+            margin: 10px 0;
+            font-size: 20px;
+            background: white;
+            border: 2px solid lightblue;
+            border-left: none;
+            border-right: none;
+        }
+
+        #pasek {
+            width: 1%;
+            height: 100%;
+            background-color: lightblue;
+           position:absolute;
+           top: 0;
+           right:29%;
+            cursor: col-resize;
+        }
+
+        #lista {
+        width:100%;
+        }
+            #lista div {
+                width:100%;
+                height:20px;
+                border: 2px solid lightblue;
+                border-left:none;
+                border-right:none;
+                text-align:center;
+                margin: 5px 0;
+                padding: 10px 0;
+            }
+        #menu_left{
+            width: 30%;
+            border-right: 2px solid lightblue;
+            position: absolute;
+            left: -100%;
+            top: 0;
+            z-index: 3;
+            height: 100%;
+            background: white;
+        }
+        #menu_left_slideup{
+            width: 50px;
+            height: 50px;
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+        #menu_left_slidedown{
+            width: 50px;
+            height: 50px;
+            clear: both;
+        }
+        #menu div{
+            position: relative;
+        }
+        #menu div input{
+            height: 20px;
+            width: 20px;
+            background: white;
+            position: absolute;
+            right : 10px;
+            top: 0;
+            border: none;
+            padding: 0;
+            z-index: 3;
+        }
+        #ulica_widok {
+            width:100%;
+            height:calc(100% - 54px*6 );
+            background:green;
+            clear:both;
+        }
+        input[type="range"]{
+border: none;
+        }
+       [style="margin:0 auto; text-align:center"]{
+           height:0px;
+           width:0px;
+           top:-200000px;
+           position:absolute;
+            visibility:hidden;
+        }
+
+ ::-webkit-scrollbar {
+    width: 12px;
+}
+::-webkit-scrollbar-track {
+    background-color: #eaeaea;
+    border-left: 1px solid #ccc;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}
+       #ciemny_ekran{
+            background: rgba(33, 33, 33, 0.75);
+            width:100%;
+            height:100%;
+            overflow:auto;
+            z-index:10;
+            position:absolute;
+            top:0;
+            left:0;
+            display:none;
+            
+       }
+       #div_kolory{
+           position:absolute;
+           width:70%;
+         
+           left:20%;
+          
+           z-index:11;
+       }
+       #div_kolory div.kolorkiG{
+           height:00px;
+           width:150px;
+           margin:2.5%;
+           border-radius:300px;
+           background:white;
+           float:left;
+           
+           left:2.5%;
+           top:2.5%;
+           animation-duration:1s;
+       }
+   
+
+       #ciemny_ekran button{
+           width:30px;
+           height:30px;
+           position:absolute;
+           right:20px;
+           top: 20px;
+           font-size:30px;
+           padding: 0;
+           background:none;
+           border:none;
+           color: white;
+       }
