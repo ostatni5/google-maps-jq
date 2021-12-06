@@ -1,8 +1,9 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
-    <meta autor="Szymon Kania"/>
+    <meta autor="Szymon Kania" />
     <link rel="shortcut icon" href="http://maps.google.com/mapfiles/ms/icons/red-dot.png" />
     <title>MAPY GOOGLE
     </title>
@@ -10,8 +11,9 @@
     <script src="libs/gmap3.min.js"></script>
     <link href="range.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzma21v8Rdd-vfPGNtetOjcfDfMtD23Ak&region=PL"></script>
- 
+    <script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzma21v8Rdd-vfPGNtetOjcfDfMtD23Ak&region=PL"></script>
+
     <script>
         $(document).ready(function () {
             //----------------pobranie z local storage--------------
@@ -27,7 +29,10 @@
                             options: {
                                 draggable: false
                             },
-                            values: [{ latLng: [tab_pozycja[i].lat, tab_pozycja[i].lng], id: "m" + i }]
+                            values: [{
+                                latLng: [tab_pozycja[i].lat, tab_pozycja[i].lng],
+                                id: "m" + i
+                            }]
                         }
                     })
                     var div = $("<div>")
@@ -51,11 +56,11 @@
 
                     })
                 }
-               liczba_listy = tab_pozycja.length
+                liczba_listy = tab_pozycja.length
             }
             //----------------pobranie z local storage--------------
 
-   
+
             //---------------ruszanie paskiem-----------------
             $("#pasek").on("mousedown", function (event) {
                 pozycja0 = event.pageX
@@ -67,9 +72,9 @@
                 //row-resize
             })
             $(window).on("mousemove", function (event) {
-             
 
-                if (klik == 1 ) {
+
+                if (klik == 1) {
                     console.log("pozycja0=" + pozycja0)
                     console.log(event.pageX)
                     aktualna = event.pageX
@@ -90,7 +95,9 @@
             })
             //---------------ruszanie paskiem-----------------
             //---------------------------------------------suwaki-------------------------------------------
-            var map = $("#mapDiv").gmap3({ get: "map" });
+            var map = $("#mapDiv").gmap3({
+                get: "map"
+            });
             console.log(map)
             $("#zoom").on("mouseover", function () {
                 $("#zoom").on("mousemove", function () {
@@ -114,7 +121,8 @@
                 $("#mapa").gmap3({
                     map: {
                         options: {
-                            center: [parseFloat($("#latitude").val()), parseFloat($("#longitude").val())],
+                            center: [parseFloat($("#latitude").val()), parseFloat($(
+                                "#longitude").val())],
 
                         },
 
@@ -128,7 +136,8 @@
                 $("#mapa").gmap3({
                     map: {
                         options: {
-                            center: [parseFloat($("#latitude").val()), parseFloat($("#longitude").val())],
+                            center: [parseFloat($("#latitude").val()), parseFloat($(
+                                "#longitude").val())],
 
                         },
 
@@ -138,19 +147,23 @@
             //---------------------------------------------suwaki------------------------------------------- 
             //---------------obsługa mapy-----------------
             ls = window.localStorage
-            
-      
+
+
             //$(window).resize(function() {location.reload()})
             var documentHeight = $(window).height()
             var klik = 0
             var pozycja0 = 0
             //+++++++ animowane menu po lewj++++++
-            $("#menu_left_slideup").click(function(){
-                $("#menu_left").animate({"left":"0px"},500);
+            $("#menu_left_slideup").click(function () {
+                $("#menu_left").animate({
+                    "left": "0px"
+                }, 500);
 
             })
-            $("#menu_left_slidedown").click(function(){
-                $("#menu_left").animate({"left":"-30%"},500);
+            $("#menu_left_slidedown").click(function () {
+                $("#menu_left").animate({
+                    "left": "-30%"
+                }, 500);
 
             })
             //+++++++ animowane menu po lewj++++++
@@ -158,12 +171,11 @@
             $("#latitude").val(50.046364479227165)
             $("#longitude").val(19.922118186950684)
             $("body").css("height", documentHeight)
-            if (liczba_listy == undefined)
-            {
-                var tab_pozycja= [null]
+            if (liczba_listy == undefined) {
+                var tab_pozycja = [null]
                 var liczba_listy = 1;
             }
-           
+
             $("#mapa").gmap3({
                 map: {
                     options: {
@@ -180,26 +192,29 @@
                                 lng: event.latLng.lng(),
                                 zoom: map.getZoom(),
                             })
-                           var div = $("<div>")
+                            var div = $("<div>")
                             $("#lista").append(div);
-                            div.html("Pozycja" + liczba_listy + '<input type="button" class="del_el" value="X" />')
+                            div.html("Pozycja" + liczba_listy +
+                                '<input type="button" class="del_el" value="X" />')
                             div.attr("id", "Pozycja" + liczba_listy)
                             div.attr("class", "btn waves-effect waves-teal")
                             div.on("click", function () {
-                          
-                                var iddiv=$(this).attr("id")
-                                var pomoc = tab_pozycja[$(this).index()+1]
+
+                                var iddiv = $(this).attr("id")
+                                var pomoc = tab_pozycja[$(this).index() + 1]
                                 $("#mapa").gmap3({
                                     map: {
                                         options: {
-                                        
-                                            center: [parseFloat(pomoc.lat), parseFloat(pomoc.lng)],
-                                            zoom:parseInt(pomoc.zoom)
-                                            
+
+                                            center: [parseFloat(pomoc.lat),
+                                                parseFloat(pomoc.lng)
+                                            ],
+                                            zoom: parseInt(pomoc.zoom)
+
                                         }
                                     }
                                 })
-                             
+
                             })
 
                             //dodawanie znacznika
@@ -208,18 +223,24 @@
                                     options: {
                                         draggable: false
                                     },
-                                    values: [{ latLng: [event.latLng.lat(), event.latLng.lng()], id: "m" + liczba_listy }]
+                                    values: [{
+                                        latLng: [event.latLng.lat(), event.latLng
+                                            .lng()
+                                        ],
+                                        id: "m" + liczba_listy
+                                    }]
                                 }
                             })
-                          
+
                             //+++++streetview+++++
                             $("#mapa").gmap3({
-       
+
                                 streetviewpanorama: {
                                     options: {
                                         container: $("#ulica_widok"),
                                         opts: {
-                                            position: [event.latLng.lat(), event.latLng.lng()],
+                                            position: [event.latLng.lat(), event.latLng
+                                            .lng()],
                                             pov: {
                                                 heading: 34,
                                                 pitch: 10,
@@ -236,19 +257,19 @@
                         mouseup: function (map, event) {
                             $("#latitude").val(map.getCenter().lat())
                             $("#longitude").val(map.getCenter().lng())
-                     
+
                         },
-                       mousemove: function (map, event) {
-                        $("#zoom").val(map.getZoom())                     
+                        mousemove: function (map, event) {
+                            $("#zoom").val(map.getZoom())
                         }
 
                     },
-                    
+
                 },
-               
+
             })
             $("#menu").on("click", ".del_el", function () {
-                
+
                 var item = $(this).parent();
                 var index = item.index()
                 item.off()
@@ -258,8 +279,8 @@
                         id: "m" + item.attr("id").slice(7, item.attr("id").length)
                     }
                 })
-                tab_pozycja.splice(index+1,1)
-                console.log(index+"index")
+                tab_pozycja.splice(index + 1, 1)
+                console.log(index + "index")
                 item.remove();
                 console.log(tab_pozycja)
                 aktualizacja_rysuj()
@@ -267,8 +288,9 @@
                     map: {
                         options: {
 
-                            center: [parseFloat($("#latitude").val()), parseFloat($("#longitude").val())],
-                         
+                            center: [parseFloat($("#latitude").val()), parseFloat($(
+                                "#longitude").val())],
+
 
                         }
                     }
@@ -277,8 +299,8 @@
             //---------------obsługa mapy-----------------
             //----------------------------------lewe menu-----------------------
             //++++++ zapisz +++++
-            $("#save").click(function(){
-                    ls.setItem("Pozycje",JSON.stringify(tab_pozycja))
+            $("#save").click(function () {
+                ls.setItem("Pozycje", JSON.stringify(tab_pozycja))
             })
             //++++++ usun +++++
             $("#delete").click(function () {
@@ -286,24 +308,27 @@
                 $('#mapa').gmap3({
                     clear: {
                         name: ["marker", "polyline"],
-                        
+
                     }
                 })
                 tab_pozycja = [null]
                 $("#lista").empty()
-                liczba_listy= 1
+                liczba_listy = 1
             })
-            
+
             //++++++ rysuj +++++
-            var defaul_kolor="blue"
+            var defaul_kolor = "blue"
             rysuj = function (kolor) {
                 var tab_rysuj = []
                 console.log("tab_pozycja")
                 console.log(tab_pozycja)
                 for (var i = 1; i < tab_pozycja.length; i++)
-                    tab_rysuj.push({ lat: parseFloat(tab_pozycja[i].lat), lng: parseFloat(tab_pozycja[i].lng) })
+                    tab_rysuj.push({
+                        lat: parseFloat(tab_pozycja[i].lat),
+                        lng: parseFloat(tab_pozycja[i].lng)
+                    })
                 console.log("tab_rysuj")
-                console.log(tab_rysuj)                
+                console.log(tab_rysuj)
                 $("#mapa").gmap3({
                     clear: {
                         name: ["polyline"],
@@ -315,7 +340,7 @@
                             strokeOpacity: 0.9,
                             strokeWeight: 4,
                             path: tab_rysuj,
-                            strokeColor:kolor,
+                            strokeColor: kolor,
                         },
 
                     }
@@ -323,7 +348,7 @@
                 })
             }
             aktualizacja_rysuj = function () {
-                if (czy_rysuj % 2 == 1)//rysownie po aktulaizacji
+                if (czy_rysuj % 2 == 1) //rysownie po aktulaizacji
                     rysuj(defaul_kolor)
             }
 
@@ -334,179 +359,198 @@
                     clear: {
                         name: ["polyline"],
                         last: true,
-                       
+
                     },
                 })
                 czy_rysuj++
-                 aktualizacja_rysuj()                
+                aktualizacja_rysuj()
             })
             //++++++ lokalizuj +++++
             $("#localize").click(function () {
                 navigator.geolocation.getCurrentPosition(
-                           function (position) {
-                               //dodawanie znacznika
-                               $("#mapa").gmap3({
-                                   marker: {
-                                       options: {
-                                           draggable: false
-                                       },
-                                       values: [{ latLng: [position.coords.latitude, position.coords.longitude]}]
-                                   }
-                               })
-                               $("#zoom").val(15)
-                               $("#latitude").val(position.coords.latitude)
-                               $("#longitude").val(position.coords.longitude)
-                               $("#mapa").gmap3({
-                                   map: {
-                                       options: {
-                                           center: [parseFloat($("#latitude").val()), parseFloat($("#longitude").val())],
+                    function (position) {
+                        //dodawanie znacznika
+                        $("#mapa").gmap3({
+                            marker: {
+                                options: {
+                                    draggable: false
+                                },
+                                values: [{
+                                    latLng: [position.coords.latitude, position
+                                        .coords.longitude
+                                    ]
+                                }]
+                            }
+                        })
+                        $("#zoom").val(15)
+                        $("#latitude").val(position.coords.latitude)
+                        $("#longitude").val(position.coords.longitude)
+                        $("#mapa").gmap3({
+                            map: {
+                                options: {
+                                    center: [parseFloat($("#latitude").val()), parseFloat($(
+                                        "#longitude").val())],
 
-                                       },
+                                },
 
-                                   }
-                               })
-                               //+++++streetview+++++
-                               $("#mapa").gmap3({
+                            }
+                        })
+                        //+++++streetview+++++
+                        $("#mapa").gmap3({
 
-                                   streetviewpanorama: {
-                                       options: {
-                                           //container: $("#ulica_widok11"),
-                                           opts: {
-                                               position: [position.coords.latitude, position.coords.longitude],
-                                               pov: {
-                                                   heading: 34,
-                                                   pitch: 10,
-                                                   zoom: 1
-                                               }
-                                           }
-                                       }
-                                   }
-                               })
-                               //bieżąca pozycja lat i lng
-                               console.log(position.coords.latitude)
-                               console.log(position.coords.longitude)
-                           },
-                           function (error) {
-                               console.log("problem z lokalizacją")
-                           },
-                           {
-                               maximumAge: 10000,    // czas dostępu do danych
-                               timeout: 15000,       // po tym czasie error jeśli brak danych
-                               enableHighAccuracy: true // dokładność
-                           }
-                           )
+                            streetviewpanorama: {
+                                options: {
+                                    //container: $("#ulica_widok11"),
+                                    opts: {
+                                        position: [position.coords.latitude, position.coords
+                                            .longitude
+                                        ],
+                                        pov: {
+                                            heading: 34,
+                                            pitch: 10,
+                                            zoom: 1
+                                        }
+                                    }
+                                }
+                            }
+                        })
+                        //bieżąca pozycja lat i lng
+                        console.log(position.coords.latitude)
+                        console.log(position.coords.longitude)
+                    },
+                    function (error) {
+                        console.log("problem z lokalizacją")
+                    }, {
+                        maximumAge: 10000, // czas dostępu do danych
+                        timeout: 15000, // po tym czasie error jeśli brak danych
+                        enableHighAccuracy: true // dokładność
+                    }
+                )
             })
             //++++++ kolor trasy +++++
             $("#trace_color").click(function () {
                 ciemno()
-                 
-                 setTimeout(function () { $(".kolorkiG").animate({ height: "150px" }, 500, function () { console.log("kolorkoG") }) }, 500)
+
+                setTimeout(function () {
+                    $(".kolorkiG").animate({
+                        height: "150px"
+                    }, 500, function () {
+                        console.log("kolorkoG")
+                    })
+                }, 500)
             })
             //++++++ typ mapy +++++
             $("#map_type").click(function () {
                 ciemno()
                 $("#divTM").fadeIn(500, function () {})
             })
-            $(".divT").on("click",function(){
-                 console.log("klik div")
+            $(".divT").on("click", function () {
+                console.log("klik div")
                 var map = $("#mapa").gmap3("get")
-                
+
                 var typ = $(this).children("img").attr("alt")
                 console.log(typ)
-                switch(typ){
-                    case "hybrid":
-                        {
-                            map.setMapTypeId(google.maps.MapTypeId.HYBRID)
-                        }
-                        break;
-                           case "road":
-                        {
-                            map.setMapTypeId(google.maps.MapTypeId.ROAD)
-                        }
-                        break;
-                           case "satellite":
-                        {
-                            map.setMapTypeId(google.maps.MapTypeId.SATELLITE)
-                        }
-                        break;
-                           case "terrain":
-                        {
-                            map.setMapTypeId(google.maps.MapTypeId.TERRAIN)
-                        }
-                        break;
+                switch (typ) {
+                    case "hybrid": {
+                        map.setMapTypeId(google.maps.MapTypeId.HYBRID)
+                    }
+                    break;
+                case "road": {
+                    map.setMapTypeId(google.maps.MapTypeId.ROAD)
                 }
-             
+                break;
+                case "satellite": {
+                    map.setMapTypeId(google.maps.MapTypeId.SATELLITE)
+                }
+                break;
+                case "terrain": {
+                    map.setMapTypeId(google.maps.MapTypeId.TERRAIN)
+                }
+                break;
+                }
+
             })
             //++++++ zaciemnienie ekranu +++++ 
             ciemno = function () {
                 $("#ciemny_ekran").fadeIn(500, function () {
                     // koniec animacji
                     //++++++ zamkniecie elementu +++++
-                    $("#close").on("click", function (){
+                    $("#close").on("click", function () {
                         $(".div_odcienie").remove()
-                        $(".kolorkiG").animate({ height: "0px" }, 100, function () {
+                        $(".kolorkiG").animate({
+                            height: "0px"
+                        }, 100, function () {
                             $("#divTM").fadeOut(500, function () {})
-                            console.log("kolorkoG") }) 
+                            console.log("kolorkoG")
+                        })
                         var item = $(this).parent()
                         item.fadeOut(1000, function () {
-                        
+
                             // koniec animacji
                         })
                     })
                 })
             }
-           
+
             //++++++ generowanie tablicy kolorów +++++
             generuj_kolory = function () {
-                var tab_kolory = ["#8a0015", "#ED1C24", "#FF7F27", "#FFF200", "#22B14C", "#00A2E8", "#3F48CC", "#A349A4", "#B97A57", "#FFAEC9", "#FFC90E", "#EFE4B0", "#B5E61D", "#99D9EA", "#7092BE", "#C8BFE7"]
+                var tab_kolory = ["#8a0015", "#ED1C24", "#FF7F27", "#FFF200", "#22B14C", "#00A2E8",
+                    "#3F48CC", "#A349A4", "#B97A57", "#FFAEC9", "#FFC90E", "#EFE4B0", "#B5E61D",
+                    "#99D9EA", "#7092BE", "#C8BFE7"
+                ]
                 var divG = $("<div>")
                 $("#ciemny_ekran").append(divG)
-                divG.attr("id","div_kolory")
+                divG.attr("id", "div_kolory")
                 for (var i = 0; i < 16; i++) {
                     var divK = $("<div>")
                     divG.append(divK)
                     divK.attr("id", "k" + i)
-                    divK.attr("class","kolorkiG")
-                    divK.css("background",tab_kolory[i])
+                    divK.attr("class", "kolorkiG")
+                    divK.css("background", tab_kolory[i])
                     divK.on("click", function () {
                         $(".div_odcienie").remove()
                         defaul_kolor = tab_kolory[$(this).attr("id").slice(1, 3)]
                         aktualizacja_rysuj()
                         console.log($(this).css("backgroundColor"))
-                        var pomocK=$(this).css("backgroundColor").slice(4,$(this).css("backgroundColor").length-1)
-                        var tab_kolor =pomocK.split(",")
+                        var pomocK = $(this).css("backgroundColor").slice(4, $(this).css(
+                            "backgroundColor").length - 1)
+                        var tab_kolor = pomocK.split(",")
                         console.log(tab_kolor)
-                        var tab_odcienie=[]
-                        for(var i=-2;i<3;i++)
-                            {
-                            tab_odcienie.push("rgb("+(parseInt(tab_kolor[0])+50*i)+","+(parseInt(tab_kolor[1])+50*i)+","+(parseInt(tab_kolor[2])+50*i)+")")
-                            }
+                        var tab_odcienie = []
+                        for (var i = -2; i < 3; i++) {
+                            tab_odcienie.push("rgb(" + (parseInt(tab_kolor[0]) + 50 * i) + "," + (
+                                parseInt(tab_kolor[1]) + 50 * i) + "," + (parseInt(
+                                tab_kolor[2]) + 50 * i) + ")")
+                        }
                         console.log(tab_odcienie)
                         for (var j = 0; j < 5; j++) {
-                        var divO = $("<div>")
-                        divG.append(divO)
-                        divO.attr("class", "div_odcienie")
-                        divO.css("backgroundColor",tab_odcienie[j])
-                        //divO.css("top",100+80*j+"px")
-                        divO.css("top",$(this).position().top+50+"px")
-                        divO.css("left",$(this).position().left+50+"px")
-                        divO.animate({top:100+80*j+"px",left:-100+"px"},500)
-                                                divO.on("click", function () {
+                            var divO = $("<div>")
+                            divG.append(divO)
+                            divO.attr("class", "div_odcienie")
+                            divO.css("backgroundColor", tab_odcienie[j])
+                            //divO.css("top",100+80*j+"px")
+                            divO.css("top", $(this).position().top + 50 + "px")
+                            divO.css("left", $(this).position().left + 50 + "px")
+                            divO.animate({
+                                top: 100 + 80 * j + "px",
+                                left: -100 + "px"
+                            }, 500)
+                            divO.on("click", function () {
 
-                                            defaul_kolor = $(this).css("backgroundColor")
-                                            aktualizacja_rysuj()
+                                defaul_kolor = $(this).css("backgroundColor")
+                                aktualizacja_rysuj()
 
-                                        })
-                      
+                            })
+
                         }
                     })
-                    
+
                     //setTimeout(function () { $(".kolorkiG").css("position","static") }, 3000)
                 }
-               
+
             }
             generuj_kolory()
-         
+
             $("#send").on("click", function () {
                 if (tab_pozycja.length <= 1)
                     alert("Najpierw wyznacz trase")
@@ -565,105 +609,114 @@
                 function onSuccess(response) {
 
                     //czytam wszystko z serwera
-                   
+
                     var allTripsOnServer = JSON.parse(response);
                     $("#ulica_widok").on("click", ".info", function () {
 
                         var item = $(this).parent();
                         var index = item.index()
-                        alert(allTripsOnServer[index][0] + " " + allTripsOnServer[index][1] + " " + allTripsOnServer[index][2])
+                        alert(allTripsOnServer[index][0] + " " + allTripsOnServer[index][1] +
+                            " " + allTripsOnServer[index][2])
                     })
 
                     //jedna wycieczka - numer 0 w pliku txt
 
-                 
+
                     // teraz pobieram z tablicy tylko dane geolokacyjne
                     // pomijam imie, kolor i datę, (do wymyślenia samodzielnie)
 
                     //----------------pobranie z local storage--------------
-                   
 
-                        //++++++++++++++   markery i lista   +++++
+
+                    //++++++++++++++   markery i lista   +++++
                     for (var i = 0; i < allTripsOnServer.length; i++) {
                         var temp = allTripsOnServer[i];
                         console.log("all")
-                            console.log(allTripsOnServer)
-                            var div = $("<div>")
-                            $("#ulica_widok").append(div);
-                            div.html( temp[0]+ " " + temp[2]+ '<input type="button" class="info" value="INFO" />')
-                            div.attr("id", "wycieczka" + i)
-                            div.on("click", function () {
-                                var id = parseInt($(this).attr("id").slice(9, 12))
-                                console.log(id)
-                                console.log(allTripsOnServer[id])
-                                var pomocTab = JSON.stringify(allTripsOnServer);
-                                
-                                var tripPomoc = JSON.parse(pomocTab);
-                                var trip = tripPomoc[id]
-                                trip.splice(0, 3)
-                                console.log("trip")
-                                console.log(trip)
-                                var firstTrip = []
-                                for (var j = 0; j < trip.length; j++) {
-                                    console.log(parseFloat(trip[j][0])+" "+parseFloat(trip[j][1]))
-                                    firstTrip.push({ latLng: [parseFloat(trip[j][0]), parseFloat(trip[j][1])],tag: "wczyt" })
-                                }
-                                console.log("firsttrip")
-                                console.log(firstTrip)
-                                $("#mapa").gmap3({
-                                    clear: {
-                                        tag:"wczyt"
-                                    },
-                                    marker: {
-                                        values: firstTrip
-                                      
-                                    },
-                                    polyline: {
-                                        options: {
-                                            strokeColor: "#ff0000",
-                                            strokeOpacity: 0.5,
-                                            strokeWeight: 4,
-                                            path: firstTrip,
-                                            
-                                        },
-                                        tag: "wczyt"
-                                    },
-                                    autofit: {} // focus na wycieczkę - przybliżenie
+                        console.log(allTripsOnServer)
+                        var div = $("<div>")
+                        $("#ulica_widok").append(div);
+                        div.html(temp[0] + " " + temp[2] +
+                            '<input type="button" class="info" value="INFO" />')
+                        div.attr("id", "wycieczka" + i)
+                        div.on("click", function () {
+                            var id = parseInt($(this).attr("id").slice(9, 12))
+                            console.log(id)
+                            console.log(allTripsOnServer[id])
+                            var pomocTab = JSON.stringify(allTripsOnServer);
 
+                            var tripPomoc = JSON.parse(pomocTab);
+                            var trip = tripPomoc[id]
+                            trip.splice(0, 3)
+                            console.log("trip")
+                            console.log(trip)
+                            var firstTrip = []
+                            for (var j = 0; j < trip.length; j++) {
+                                console.log(parseFloat(trip[j][0]) + " " + parseFloat(trip[j][
+                                    1]))
+                                firstTrip.push({
+                                    latLng: [parseFloat(trip[j][0]), parseFloat(trip[j][
+                                        1
+                                    ])],
+                                    tag: "wczyt"
                                 })
+                            }
+                            console.log("firsttrip")
+                            console.log(firstTrip)
+                            $("#mapa").gmap3({
+                                clear: {
+                                    tag: "wczyt"
+                                },
+                                marker: {
+                                    values: firstTrip
+
+                                },
+                                polyline: {
+                                    options: {
+                                        strokeColor: "#ff0000",
+                                        strokeOpacity: 0.5,
+                                        strokeWeight: 4,
+                                        path: firstTrip,
+
+                                    },
+                                    tag: "wczyt"
+                                },
+                                autofit: {} // focus na wycieczkę - przybliżenie
 
                             })
-                        }
-                        
-                   
+
+                        })
+                    }
+
+
                     //----------------pobranie z local storage--------------
 
                     //rysuję pierwsza wycieczkę:
 
-             
+
                 }
             })
-            
+
             //----------------------------------lewe menu-----------------------
-    
+
 
         })
     </script>
     <style>
-        
-        #divTM{
+        #divTM {
             width: 80%;
             margin: auto;
-            top:30%;
+            top: 30%;
             left: 10%;
             display: none;
             height: auto;
             position: absolute;
         }
-        #divTM img{
+
+        #divTM img {
             width: 100%;
         }
-        #divTM div{
+
+        #divTM div {
             width: 25%;
             height: auto;
             float: left;
@@ -671,31 +724,40 @@
             color: white;
             font-weight: bold;
         }
-        .div_odcienie{
+
+        .div_odcienie {
             margin: 0;
             border: none;
             position: absolute;
             right: 100%;
-            top:100px;
+            top: 100px;
             height: 50px;
             width: 50px;
             border-radius: 50px;
             z-index: 12;
             visibility: visible;
-            
-            
+
+
         }
     </style>
 </head>
 
-<body> 
-    <div id="ciemny_ekran" >
+<body>
+    <div id="ciemny_ekran">
         <button id="close">X</button>
         <div id="divTM">
-            <div class="divT"><img src="img/road.PNG" alt="road" ><p>DROGA</p></div>
-            <div class="divT"><img src="img/satellite.PNG" alt="satellite"><p>SATELITA</p></div>
-            <div class="divT"><img src="img/hybrid.PNG" alt="hybrid"><p>HYBRYDOWA</p></div>
-            <div class="divT"><img src="img/terrain.PNG" alt="terrain"><p>TEREN</p></div>
+            <div class="divT"><img src="img/road.PNG" alt="road">
+                <p>DROGA</p>
+            </div>
+            <div class="divT"><img src="img/satellite.PNG" alt="satellite">
+                <p>SATELITA</p>
+            </div>
+            <div class="divT"><img src="img/hybrid.PNG" alt="hybrid">
+                <p>HYBRYDOWA</p>
+            </div>
+            <div class="divT"><img src="img/terrain.PNG" alt="terrain">
+                <p>TEREN</p>
+            </div>
         </div>
     </div>
     <div id="mapa">
@@ -706,25 +768,24 @@
         <input type="range" class="suwaki" id="latitude" min="-90" max="90" step="0.00000000000000001" />
         <input type="range" class="suwaki" id="longitude" min="-180" max="180" step="0.00000000000000001" />
         <input type="range" class="suwaki" id="zoom" min="1" max="15" step="1" />
-        <div id="lista">    </div>
+        <div id="lista"> </div>
 
     </div>
     <button id="menu_left_slideup">>></button>
     <div id="menu_left">
-        <button id="menu_left_slidedown"><<</button>
-        <input type="button" id="save" value="zapisz lokalizacje" />
+        <button id="menu_left_slidedown">
+            <<</button> <input type="button" id="save" value="zapisz lokalizacje" />
 
-        <input type="button" id="delete" value="usuń" />
-        <input type="button" id="draw" value="rysuj/usuń trasę" />
-        <input type="button" id="localize" value="lokalizuj" />
-        <input type="button" id="trace_color" value="kolor trasy" />
-        <input type="button" id="map_type" value="typ mapy" />
-        <input type="button" id="send" value="Wyslij na serwer" />
-        <input type="button" id="read" value="Wczytaj" />
-    <div id="ulica_widok"></div>
+            <input type="button" id="delete" value="usuń" />
+            <input type="button" id="draw" value="rysuj/usuń trasę" />
+            <input type="button" id="localize" value="lokalizuj" />
+            <input type="button" id="trace_color" value="kolor trasy" />
+            <input type="button" id="map_type" value="typ mapy" />
+            <input type="button" id="send" value="Wyslij na serwer" />
+            <input type="button" id="read" value="Wczytaj" />
+            <div id="ulica_widok"></div>
     </div>
-
-    <!--<script src="js/materialize.min.js"></script>--> 
 </body>
-<!--Szymon'ostatni5'Kania--> 
+<!--Szymon'ostatni5'Kania-->
+
 </html>
